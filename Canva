@@ -3,86 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Núcleo Aurora | Sistema de Convergencia Energética</title>
+<title>Núcleo Aurora | Sistema Profesional</title>
 
 <style>
-/* ================================
-   VARIABLES GLOBALES PROFESIONALES
-================================ */
 :root{
-  --bg-dark:#0a0f1c;
-  --bg-card:rgba(255,255,255,0.05);
-  --primary:#00f0ff;
-  --secondary:#7a5cff;
-  --success:#00ff9d;
+  --bg:#070b16;
+  --card:rgba(255,255,255,0.06);
+  --primary:#00e5ff;
+  --secondary:#7b5cff;
+  --success:#00ffae;
   --danger:#ff4d6d;
   --text:#ffffff;
-  --blur:blur(18px);
 }
 
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family: 'Segoe UI', sans-serif;
+  font-family:'Segoe UI',sans-serif;
 }
 
 body{
-  background: radial-gradient(circle at top,#111a33,#050811);
+  background:radial-gradient(circle at top,#0f1b35,#050811);
   color:var(--text);
-  overflow-x:hidden;
 }
 
-/* ================================
-   CANVAS FONDO
-================================ */
-canvas{
-  position:fixed;
-  top:0;
-  left:0;
-  z-index:-1;
-}
-
-/* ================================
-   CONTENEDORES
-================================ */
 .container{
-  width:90%;
-  max-width:1200px;
-  margin:auto;
-  padding:40px 0;
-}
-
-.card{
-  background:var(--bg-card);
-  backdrop-filter:var(--blur);
-  border:1px solid rgba(255,255,255,0.1);
-  border-radius:16px;
-  padding:30px;
-  box-shadow:0 0 40px rgba(0,240,255,0.08);
-  transition:0.4s ease;
-}
-
-.card:hover{
-  box-shadow:0 0 60px rgba(0,240,255,0.15);
-}
-
-/* ================================
-   LOGIN
-================================ */
-.auth-section{
   display:flex;
   justify-content:center;
   align-items:center;
   min-height:100vh;
 }
 
+.card{
+  width:380px;
+  background:var(--card);
+  backdrop-filter:blur(20px);
+  border-radius:16px;
+  padding:30px;
+  box-shadow:0 0 40px rgba(0,229,255,0.1);
+}
+
+h2{
+  text-align:center;
+  margin-bottom:20px;
+}
+
 input{
   width:100%;
   padding:12px;
-  margin:10px 0;
-  border-radius:8px;
+  margin:8px 0;
   border:none;
+  border-radius:8px;
   outline:none;
 }
 
@@ -92,10 +64,10 @@ button{
   margin-top:10px;
   border:none;
   border-radius:8px;
-  background:linear-gradient(45deg,var(--primary),var(--secondary));
-  color:#000;
   font-weight:bold;
   cursor:pointer;
+  background:linear-gradient(45deg,var(--primary),var(--secondary));
+  color:#000;
   transition:0.3s;
 }
 
@@ -103,241 +75,173 @@ button:hover{
   transform:scale(1.05);
 }
 
-/* Indicador contraseña */
-.strength{
+.small-btn{
+  font-size:12px;
+  padding:6px;
+  margin-top:5px;
+}
+
+.strength-bar{
   height:8px;
-  border-radius:4px;
+  border-radius:5px;
   margin-top:5px;
   transition:0.3s;
 }
 
-/* ================================
-   DASHBOARD
-================================ */
+.message{
+  text-align:center;
+  margin-top:10px;
+  font-size:14px;
+}
+
 .hidden{
   display:none;
-}
-
-.section-title{
-  font-size:2rem;
-  margin-bottom:20px;
-  background:linear-gradient(45deg,var(--primary),var(--secondary));
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
-.dashboard-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-}
-
-/* Barras energéticas */
-.bar{
-  height:20px;
-  background:rgba(255,255,255,0.1);
-  border-radius:10px;
-  overflow:hidden;
-}
-
-.bar-fill{
-  height:100%;
-  background:linear-gradient(90deg,var(--primary),var(--success));
-  width:0%;
-  transition:1s ease;
-}
-
-footer{
-  text-align:center;
-  padding:20px;
-  margin-top:50px;
-  border-top:1px solid rgba(255,255,255,0.1);
 }
 </style>
 </head>
 
 <body>
 
-<canvas id="bgCanvas"></canvas>
-
-<!-- ================================
-     AUTENTICACIÓN
-================================ -->
-<section class="auth-section" id="authSection">
-  <div class="card" style="width:350px;">
-    <h2 style="text-align:center;">Protocolo Aurora ID</h2>
-    
-    <input type="text" id="name" placeholder="Nombre completo">
-    <input type="email" id="email" placeholder="Correo Gmail">
-    <input type="password" id="password" placeholder="Crear contraseña">
-    <div class="strength" id="strengthBar"></div>
-    <input type="password" id="confirmPassword" placeholder="Confirmar contraseña">
-    
-    <button onclick="register()">Registrar</button>
-    <button onclick="login()">Iniciar Sesión</button>
-    
-    <p id="authMessage" style="margin-top:10px;text-align:center;"></p>
-  </div>
-</section>
-
-<!-- ================================
-     DASHBOARD PRINCIPAL
-================================ -->
-<section id="dashboard" class="hidden container">
-
-<h1 class="section-title">Núcleo Aurora — Centro de Calibración Energética</h1>
-
-<div class="dashboard-grid">
+<div class="container">
 
 <div class="card">
-  <h3>Armonía Global</h3>
-  <div class="bar"><div class="bar-fill" id="harmonyBar"></div></div>
+
+<h2>Registro Aurora ID</h2>
+
+<input type="text" id="name" placeholder="Nombre completo">
+
+<input type="text" id="email" placeholder="Crear Gmail">
+<button class="small-btn" onclick="generateEmail()">Generar Gmail sugerido</button>
+
+<input type="password" id="password" placeholder="Crear contraseña segura">
+<div class="strength-bar" id="strengthBar"></div>
+<button class="small-btn" onclick="generatePassword()">Generar contraseña segura</button>
+
+<input type="password" id="confirmPassword" placeholder="Confirmar contraseña">
+
+<button onclick="register()">Crear Cuenta</button>
+<button onclick="login()">Iniciar Sesión</button>
+
+<div class="message" id="message"></div>
+
 </div>
 
-<div class="card">
-  <h3>Estabilidad Climática</h3>
-  <div class="bar"><div class="bar-fill" id="climateBar"></div></div>
 </div>
-
-<div class="card">
-  <h3>Frecuencia Colectiva</h3>
-  <div class="bar"><div class="bar-fill" id="frequencyBar"></div></div>
-</div>
-
-<div class="card">
-  <h3>Impacto Ambiental Reducido</h3>
-  <div class="bar"><div class="bar-fill" id="impactBar"></div></div>
-</div>
-
-</div>
-
-<br>
-
-<div class="card">
-<h2>Posgrado de Alimentación Matemática</h2>
-<p>
-El algoritmo interpreta la capacidad humana como un resplandor de inteligencia galáctica.
-Cada nodo humano genera energía sistémica calibrada mediante estructuras matemáticas armónicas.
-</p>
-</div>
-
-<footer>
-Sistema Aurora © 2045 — Convergencia Energética Humana
-</footer>
-
-</section>
 
 <script>
-/* ================================
-   VALIDACIÓN CONTRASEÑA
-================================ */
-const passwordInput = document.getElementById("password");
-const strengthBar = document.getElementById("strengthBar");
 
-passwordInput.addEventListener("input", function(){
-  const value = passwordInput.value;
-  let strength = 0;
-  if(value.length > 6) strength++;
+/* ================================
+   GENERADOR DE GMAIL SUGERIDO
+================================ */
+function generateEmail(){
+  const name = document.getElementById("name").value.toLowerCase().replace(/\s/g,'');
+  const random = Math.floor(Math.random()*1000);
+  document.getElementById("email").value = name + random + "@gmail.com";
+}
+
+/* ================================
+   GENERADOR CONTRASEÑA SEGURA
+================================ */
+function generatePassword(){
+  const chars="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
+  let pass="";
+  for(let i=0;i<14;i++){
+    pass+=chars.charAt(Math.floor(Math.random()*chars.length));
+  }
+  document.getElementById("password").value=pass;
+  checkStrength();
+}
+
+/* ================================
+   MEDIDOR DE SEGURIDAD
+================================ */
+document.getElementById("password").addEventListener("input",checkStrength);
+
+function checkStrength(){
+  const value=document.getElementById("password").value;
+  let strength=0;
+  if(value.length>=8) strength++;
   if(/[A-Z]/.test(value)) strength++;
   if(/[0-9]/.test(value)) strength++;
   if(/[^A-Za-z0-9]/.test(value)) strength++;
 
-  const colors = ["red","orange","yellow","lime"];
-  strengthBar.style.width = (strength*25)+"%";
-  strengthBar.style.background = colors[strength-1] || "transparent";
-});
+  const bar=document.getElementById("strengthBar");
+  const colors=["red","orange","yellow","lime"];
+  bar.style.width=(strength*25)+"%";
+  bar.style.background=colors[strength-1]||"transparent";
+}
+
+/* ================================
+   CIFRADO SHA-256 REAL
+================================ */
+async function hashPassword(password){
+  const encoder=new TextEncoder();
+  const data=encoder.encode(password);
+  const hashBuffer=await crypto.subtle.digest("SHA-256",data);
+  const hashArray=Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b=>b.toString(16).padStart(2,"0")).join("");
+}
 
 /* ================================
    REGISTRO
 ================================ */
-function register(){
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  const confirm = document.getElementById("confirmPassword").value;
-  const message = document.getElementById("authMessage");
+async function register(){
+  const name=document.getElementById("name").value;
+  const email=document.getElementById("email").value;
+  const password=document.getElementById("password").value;
+  const confirm=document.getElementById("confirmPassword").value;
+  const message=document.getElementById("message");
 
-  if(!email.endsWith("@gmail.com")){
-    message.innerText="Debe usar un correo Gmail válido.";
+  const gmailRegex=/^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+
+  if(!gmailRegex.test(email)){
+    message.style.color="red";
+    message.innerText="Debe ingresar un Gmail válido.";
     return;
   }
 
-  if(password !== confirm){
+  if(password!==confirm){
+    message.style.color="red";
     message.innerText="Las contraseñas no coinciden.";
     return;
   }
 
-  localStorage.setItem("auroraUser", JSON.stringify({name,email,password}));
+  const hashed=await hashPassword(password);
+
+  localStorage.setItem("auroraUser",JSON.stringify({name,email,hashed}));
+
   message.style.color="lime";
-  message.innerText="Registro exitoso.";
+  message.innerText="Cuenta creada exitosamente.";
 }
 
 /* ================================
    LOGIN
 ================================ */
-function login(){
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  const stored = JSON.parse(localStorage.getItem("auroraUser"));
-  const message = document.getElementById("authMessage");
+async function login(){
+  const email=document.getElementById("email").value;
+  const password=document.getElementById("password").value;
+  const stored=JSON.parse(localStorage.getItem("auroraUser"));
+  const message=document.getElementById("message");
 
-  if(stored && stored.email === email && stored.password === password){
-    document.getElementById("authSection").classList.add("hidden");
-    document.getElementById("dashboard").classList.remove("hidden");
-    activateSystem();
+  if(!stored){
+    message.style.color="red";
+    message.innerText="No existe cuenta registrada.";
+    return;
+  }
+
+  const hashed=await hashPassword(password);
+
+  if(stored.email===email && stored.hashed===hashed){
+    message.style.color="lime";
+    message.innerText="Acceso autorizado. Bienvenido al Núcleo Aurora.";
   }else{
     message.style.color="red";
     message.innerText="Credenciales incorrectas.";
   }
 }
 
-/* ================================
-   ACTIVACIÓN DASHBOARD
-================================ */
-function activateSystem(){
-  document.getElementById("harmonyBar").style.width="92%";
-  document.getElementById("climateBar").style.width="88%";
-  document.getElementById("frequencyBar").style.width="95%";
-  document.getElementById("impactBar").style.width="70%";
-}
-
-/* ================================
-   CANVAS PARTÍCULAS
-================================ */
-const canvas = document.getElementById("bgCanvas");
-const ctx = canvas.getContext("2d");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let particles=[];
-for(let i=0;i<100;i++){
-  particles.push({
-    x:Math.random()*canvas.width,
-    y:Math.random()*canvas.height,
-    r:Math.random()*2,
-    d:Math.random()*1
-  });
-}
-
-function draw(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle="rgba(0,240,255,0.7)";
-  particles.forEach(p=>{
-    ctx.beginPath();
-    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-    ctx.fill();
-    p.y+=p.d;
-    if(p.y>canvas.height) p.y=0;
-  });
-  requestAnimationFrame(draw);
-}
-draw();
-
-window.addEventListener("resize",()=>{
-  canvas.width=window.innerWidth;
-  canvas.height=window.innerHeight;
-});
 </script>
 
 </body>
 </html>
+    
